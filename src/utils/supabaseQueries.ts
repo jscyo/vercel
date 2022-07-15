@@ -1,4 +1,4 @@
-import { supabase } from "../../../utils/supabaseClient";
+import { supabase } from "./supabaseClient"
 
 export async function getURLMappingIfExists(
   actualLink: string

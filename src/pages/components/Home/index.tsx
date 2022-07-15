@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {getURLMappingIfExists, createNewURLMapping} from "./supabaseQueries"
+import {getURLMappingIfExists, createNewURLMapping} from "../../../utils/supabaseQueries"
 
 export default function Home() {
   const [url, setUrl] = useState("");

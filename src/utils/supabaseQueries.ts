@@ -1,17 +1,46 @@
 import { supabase } from "./supabaseClient"
 
-export async function getURLMappingIfExists(
+export async function getURLMappingIfExistsWithActualUrl(
   actualLink: string
-): Promise<string | undefined> {
+): Promise<{
+  shortened_link: string,
+  actual_link: string
+} | undefined> {
   // check that a mapping exists
   let { data, error, status } = await supabase
     .from("url-link-mapping")
-    .select("shortend_link")
+    .select("shortend_link, actual_link")
     .eq("actual_link", actualLink)
     .single();
 
   if (status === 200) {
-    return data.shortend_link;
+    return {
+      actual_link: data.actual_link,
+      shortened_link: data.shortend_link
+    };
+  }
+
+  return undefined;
+}
+
+export async function getURLMappingIfExistsWithMappdId(
+  mappedId: string
+): Promise<{
+  shortened_link: string,
+  actual_link: string
+} | undefined> {
+  // check that a mapping exists
+  let { data, error, status } = await supabase
+    .from("url-link-mapping")
+    .select("shortend_link, actual_link")
+    .eq("shortend_link", mappedId)
+    .single();
+
+  if (status === 200) {
+    return {
+      actual_link: data.actual_link,
+      shortened_link: data.shortend_link
+    };
   }
 
   return undefined;

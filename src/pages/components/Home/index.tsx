@@ -1,5 +1,6 @@
 import { useState } from "react";
-import {getURLMappingIfExists, createNewURLMapping} from "../../../utils/supabaseQueries"
+import {getURLMappingIfExistsWithActualUrl, createNewURLMapping} from "../../../utils/supabaseQueries"
+import { generateActualUrlFromMappedId } from "../../../utils/urlParser";
 
 export default function Home() {
   const [url, setUrl] = useState("");
@@ -8,11 +9,13 @@ export default function Home() {
   async function generateUrlMapping() {
 
     // check if mapping exists
-    let short_link = await getURLMappingIfExists(url);
+    let urlMapping = await getURLMappingIfExistsWithActualUrl(url);
 
-    if(short_link === undefined){
+    if(urlMapping === undefined){
       // create a new mapping
-      await createNewURLMapping(url);
+      const mappedId = await createNewURLMapping(url);
+      const finalUrl = generateActualUrlFromMappedId(mappedId)
+      setMappedUrl(finalUrl) 
     }
   }
 

@@ -14,6 +14,7 @@ export default async function handler(
   
   if(urlMapping !== undefined){
     res.redirect(urlMapping.actual_link)
+    return;
   }
 
     res.send({ message: "Success" });

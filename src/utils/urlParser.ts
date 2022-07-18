@@ -21,5 +21,5 @@ export function isStringAValidUrl(url: string): boolean {
 
 export function generateActualUrlFromMappedId(mappedId: string): string {
     // this should be in the format of "https://veceldomain.com/api/mappedId"
-  return domain + "api/" + mappedId;
+  return "https://"+domain + "/api/" + mappedId;
 }

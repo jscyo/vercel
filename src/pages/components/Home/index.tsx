@@ -16,7 +16,10 @@ export default function Home() {
       const mappedId = await createNewURLMapping(url);
       const finalUrl = generateActualUrlFromMappedId(mappedId)
       setMappedUrl(finalUrl) 
+    } else {
+      setMappedUrl(urlMapping?.shortened_link)
     }
+
   }
 
   return (

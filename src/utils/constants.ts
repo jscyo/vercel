@@ -1,1 +1,1 @@
-export const domain = "https://vercel-fs0g8iyk7-jscyo.vercel.app/";
+export const domain = process.env.VERCEL_URL;

@@ -1,1 +1,1 @@
-export const domain = process.env.VERCEL_URL;
+export const domain = "vercel-jscyo.vercel.app";

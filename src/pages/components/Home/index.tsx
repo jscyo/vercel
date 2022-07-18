@@ -61,7 +61,7 @@ export default function Home() {
           id="generate-url"
           onClick={generateUrlMapping}
         >
-          Button
+          Shorten!!!
         </button>
         <div className="select-all" id="linkField">
           {mappedUrl}
